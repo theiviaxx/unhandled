@@ -111,13 +111,7 @@ Traceback:
             except (OSError, IOError):
                 pass
         if source is None and filename == '<stdin>':
-            try:
-                pos = sys.stdin.tell()
-                sys.stdin.seek(0)
-                source = sys.stdin.read(1)
-                sys.stdin.seek(pos)
-            except:
-                pass
+            return lineno, [], '<unknown>', []
         if source is None and filename == '<maya console>':
             return lineno - 1, [], '<unknown>', []
         if source is None:
